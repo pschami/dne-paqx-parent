@@ -6,7 +6,7 @@ version: '2'
 services:
 
   dne-paqx:
-    image: cpsd-dne-paqx
+    image: IMAGE_NAME_STANDIN:IMAGE_TAG_STANDIN
     container_name: symphony-dne-paqx
     network_mode: "host"
     command: --spring.cloud.consul.host=${HOSTNAME}

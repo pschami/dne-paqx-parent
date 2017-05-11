@@ -32,13 +32,14 @@ init_dir ()
 }
 
 # check and create the directories for the service
-SERVICE_BUILD_ROOT=${RPM_BUILD_ROOT}/opt/dell/dne-paqx
+SERVICE_BUILD_ROOT=${RPM_BUILD_ROOT}/opt/dell/cpsd/dne-paqx
 
 init_dir ${SERVICE_BUILD_ROOT}
 init_dir ${SERVICE_BUILD_ROOT}/install
 
 # copy the install scripts
 cp -rf ${RPM_SOURCE_DIR}/docker/compose/install/* ${SERVICE_BUILD_ROOT}/install
+cp -rf ${RPM_SOURCE_DIR}/build/install/docker-compose.yml ${SERVICE_BUILD_ROOT}/install
 
 # copy systemd service definition
 init_dir ${RPM_BUILD_ROOT}/usr/lib/systemd/system
@@ -58,9 +59,9 @@ exit 0
 ##############################################################################
 %post
 if [ $1 -eq 1 ];then
-    /bin/sh /opt/dell/dne-paqx/install/dne-paqx-install.sh
+    /bin/sh /opt/dell/cpsd/dne-paqx/install/dne-paqx-install.sh
 elif [ $1 -eq 2 ];then
-    /bin/sh /opt/dell/dne-paqx/install/dne-paqx-upgrade.sh
+    /bin/sh /opt/dell/cpsd/dne-paqx/install/dne-paqx-upgrade.sh
 else
     echo "Unexpected argument passed to RPM %post script: [$1]"
     exit 1
@@ -73,7 +74,7 @@ exit 0
 ##############################################################################
 %preun
 if [ $1 -eq 0 ];then
-    /bin/sh /opt/dell/dne-paqx/install/dne-paqx-remove.sh
+    /bin/sh /opt/dell/cpsd/dne-paqx/install/dne-paqx-remove.sh
 fi
 exit 0
 
@@ -84,5 +85,5 @@ exit 0
 
 %attr(644,root,root) /usr/lib/systemd/system/dne-paqx.service
 
-%attr(0754,rcm,dell) /opt/dell/dne-paqx/
-%attr(0754,rcm,dell) /opt/dell/dne-paqx/install/
+%attr(0754,rcm,dell) /opt/dell/cpsd/dne-paqx/
+%attr(0754,rcm,dell) /opt/dell/cpsd/dne-paqx/install/
