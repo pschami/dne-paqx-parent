@@ -54,6 +54,16 @@
             <classifier>service-tar</classifier>
         </dependency>
     </dependencies>
+    
+    <profiles>
+        <profile>
+            <id>locallyBuildDockerImage</id>
+            <properties>
+                <skipDocker>false</skipDocker>
+                <dockerImage.tag>latest</dockerImage.tag>
+            </properties>
+        </profile>
+    </profiles>
 
     <build>
         <plugins>
@@ -136,6 +146,25 @@
                     </execution>
                 </executions>
             </plugin>   
+            
+            <plugin>
+                <artifactId>maven-assembly-plugin</artifactId>
+                <version>2.2-beta-5</version>
+                <configuration>
+                    <descriptors>
+                        <descriptor>assembly/assembly.xml</descriptor>
+                    </descriptors>
+                </configuration>
+                <executions>
+                    <execution>
+                        <id>make-assembly</id>
+                        <phase>package</phase>
+                        <goals>
+                            <goal>single</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
             
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
