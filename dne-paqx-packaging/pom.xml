@@ -21,6 +21,10 @@
         </license>
     </licenses>
     
+    <properties>
+        <com.dell.cpsd.ess.version>1.0-SNAPSHOT</com.dell.cpsd.ess.version>
+    </properties>
+    
     <dependencies>
     
         <dependency>
@@ -34,7 +38,7 @@
         <dependency>
             <groupId>com.dell.cpsd.paqx.dne</groupId>
             <artifactId>dne-paqx-distribution</artifactId>
-            <version>${project.version}</version>
+            <version>${parent.version}</version>
             <type>tar</type>
             <classifier>service-tar</classifier>
         </dependency>

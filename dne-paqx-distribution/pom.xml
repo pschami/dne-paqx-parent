@@ -41,8 +41,6 @@
         <dockerImage.org>cpsd</dockerImage.org>
         <dockerImage.tag>latest</dockerImage.tag>
         <dockerImage.service>dne-paqx</dockerImage.service>
-        
-        <com.dell.cpsd.ess.version>1.0-SNAPSHOT</com.dell.cpsd.ess.version>
     </properties>
     
     <profiles>
