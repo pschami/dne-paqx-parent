@@ -9,7 +9,7 @@ services:
     image: IMAGE_NAME_STANDIN:IMAGE_TAG_STANDIN
     container_name: symphony-dne-paqx
     network_mode: "host"
-    command: --spring.cloud.consul.host=$HOSTNAME
+    command: --spring.cloud.consul.host=${HOSTNAME}
     volumes:
       - /opt/dell/cpsd/rcm-fitness/conf/:/opt/dell/cpsd/dne-paqx/conf/
 

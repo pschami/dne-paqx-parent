@@ -45,16 +45,6 @@
         <com.dell.cpsd.ess.version>1.0-SNAPSHOT</com.dell.cpsd.ess.version>
     </properties>
     
-    <dependencies>
-        <dependency>
-            <groupId>com.dell.cpsd.ess</groupId>
-            <artifactId>engineering-standards-service-distribution</artifactId>
-            <version>${com.dell.cpsd.ess.version}</version>
-            <type>tar</type>
-            <classifier>service-tar</classifier>
-        </dependency>
-    </dependencies>
-    
     <profiles>
         <profile>
             <id>locallyBuildDockerImage</id>
@@ -72,20 +62,7 @@
                 <artifactId>maven-dependency-plugin</artifactId>
                 <version>2.10</version>
                 <executions>
-                
-                    <execution>
-                        <id>unpack-ess-service-tar</id>
-                        <phase>package</phase>
-                        <goals>
-                            <goal>unpack-dependencies</goal>
-                        </goals>
-                        <configuration>
-                            <includeGroupIds>com.dell.cpsd.ess</includeGroupIds>
-                            <includeArtifactIds>engineering-standards-service-distribution</includeArtifactIds>
-                            <includes>**</includes>
-                        </configuration>
-                    </execution>
-
+               
                     <execution>
                         <id>copy-dependencies-for-distribution</id>
                         <phase>package</phase>
