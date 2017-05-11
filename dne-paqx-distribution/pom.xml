@@ -72,7 +72,7 @@
                                 <artifactItem>
                                     <groupId>com.dell.cpsd.paqx.dne</groupId>
                                     <artifactId>dne-paqx-web</artifactId>
-                                    <version>${parent.version}</version>
+                                    <version>${project.parent.version}</version>
                                 </artifactItem>
                             </artifactItems>
                             <outputDirectory>${project.build.directory}/dependency/lib</outputDirectory>

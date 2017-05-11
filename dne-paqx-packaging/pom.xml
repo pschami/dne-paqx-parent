@@ -38,7 +38,7 @@
         <dependency>
             <groupId>com.dell.cpsd.paqx.dne</groupId>
             <artifactId>dne-paqx-distribution</artifactId>
-            <version>${parent.version}</version>
+            <version>${project.parent.version}</version>
             <type>tar</type>
             <classifier>service-tar</classifier>
         </dependency>
