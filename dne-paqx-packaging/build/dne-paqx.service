@@ -6,7 +6,9 @@ After=network.target docker.service rabbitmq-server.service
 Type=simple
 WorkingDirectory=/opt/dell
 Environment=HOSTNAME=%H
-ExecStart=/usr/bin/docker-compose -f /opt/dell/cpsd/dne-paqx/install/docker-compose.yml up -d
-ExecStop=/usr/bin/docker-compose -f /opt/dell/cpsd/dne-paqx/install/docker-compose.yml down
+ExecStart=/usr/bin/docker-compose -f /opt/dell/cpsd/dne-paqx/image/engineering-standards-service/docker-compose.yml up -d
+ExecStart=/usr/bin/docker-compose -f /opt/dell/cpsd/dne-paqx/image/dne-paqx/docker-compose.yml up -d
+ExecStop=/usr/bin/docker-compose -f /opt/dell/cpsd/dne-paqx/image/dne-paqx/docker-compose.yml down
+ExecStop=/usr/bin/docker-compose -f /opt/dell/cpsd/dne-paqx/image/engineering-standards-service/docker-compose.yml down
 [Install]
 WantedBy=multi-user.target

@@ -67,7 +67,9 @@ cp -r ${RPM_SOURCE_DIR}/target/dependency/dne-paqx/* ${SERVICE_BUILD_ROOT}/image
 ##############################################################################
 # copy the scripts to the install directory
 ##############################################################################
-cp -rf ${RPM_SOURCE_DIR}/build/*.sh ${SERVICE_BUILD_ROOT}/install
+cp -rf ${RPM_SOURCE_DIR}/build/install.sh ${SERVICE_BUILD_ROOT}/install
+cp -rf ${RPM_SOURCE_DIR}/build/remove.sh ${SERVICE_BUILD_ROOT}/install
+cp -rf ${RPM_SOURCE_DIR}/build/upgrade.sh ${SERVICE_BUILD_ROOT}/install
 cp -rf ${RPM_SOURCE_DIR}/build/docker-compose.yml ${SERVICE_BUILD_ROOT}/install
 
 
@@ -81,6 +83,8 @@ cp ${RPM_SOURCE_DIR}/build/dne-paqx.service ${RPM_BUILD_ROOT}/usr/lib/systemd/sy
 # pre
 ##############################################################################
 %pre
+getent group dell >/dev/null || /usr/sbin/groupadd -f -r dell
+getent passwd dnepx >/dev/null || /usr/sbin/useradd -r -g dell -s /sbin/nologin -M dnepx
 exit 0
 
 
@@ -115,8 +119,8 @@ exit 0
 
 %attr(644,root,root) /usr/lib/systemd/system/dne-paqx.service
 
-/opt/dell/cpsd/dne-paqx
-/opt/dell/cpsd/dne-paqx/install
-/opt/dell/cpsd/dne-paqx/image
-/opt/dell/cpsd/dne-paqx/image/dne-paqx
-/opt/dell/cpsd/dne-paqx/image/engineering-standards-service
+%attr(0754,dnepx,dell) /opt/dell/cpsd/dne-paqx
+%attr(0755,dnepx,dell) /opt/dell/cpsd/dne-paqx/install
+%attr(0755,dnepx,dell) /opt/dell/cpsd/dne-paqx/image
+%attr(0755,dnepx,dell) /opt/dell/cpsd/dne-paqx/image/dne-paqx
+%attr(0755,dnepx,dell) /opt/dell/cpsd/dne-paqx/image/engineering-standards-service
