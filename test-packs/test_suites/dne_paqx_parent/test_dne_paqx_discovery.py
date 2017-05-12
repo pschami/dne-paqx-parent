@@ -24,11 +24,11 @@ def load_test_data():
     sshpass = af_support_tools.get_config_file_property(config_file=env_file, heading='Base_OS', property='password')
 
     global node_id
-    node_id = af_support_tools.get_config_file_property(config_file=conf_file, heading='dne_paqx_parent', property='node_id')
+    node_id = af_support_tools.get_config_file_property(config_file=config_file, heading='dne_paqx_parent', property='node_id')
     global rackhd_ip
-    rackhd_ip = af_support_tools.get_config_file_property(config_file=conf_file, heading='dne_paqx_parent', property='rackhd_ip')
+    rackhd_ip = af_support_tools.get_config_file_property(config_file=config_file, heading='dne_paqx_parent', property='rackhd_ip')
     global mac_address
-    mac_address = af_support_tools.get_config_file_property(config_file=conf_file, heading='dne_paqx_parent', property='mac_address')
+    mac_address = af_support_tools.get_config_file_property(config_file=config_file, heading='dne_paqx_parent', property='mac_address')
 
     global rmq_username
     rmq_username = 'guest'
