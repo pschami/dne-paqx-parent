@@ -1,31 +1,41 @@
-import os
-import time
+import af_support_tools
+from . import globals as gbl
 import json
+import os
 import pytest
 import requests
 import requests.exceptions
-import af_support_tools
-from . import globals as gbl
+import time
 
-# Get vars from env ini file
-env_file = 'env.ini'
-ipaddress = af_support_tools.get_config_file_property(config_file=env_file, heading='Base_OS', property='hostname')
-ssh_user = af_support_tools.get_config_file_property(config_file=env_file, heading='Base_OS', property='username')
-ssh_pass = af_support_tools.get_config_file_property(config_file=env_file, heading='Base_OS', property='password')
+@pytest.fixture(scope="module", autouse=True)
+def load_test_data():
+    # Set config ini file name
+    global config_file
+    config_file = 'dne_paqx_parent/core_config.ini'
+    global env_file
+    env_file = 'env.ini'
 
-# Get vars from config ini file and set the values
-conf_file = 'dne_paqx_parent/core_config.ini'
-port = af_support_tools.get_config_file_property(config_file=conf_file, heading='dne_paqx_parent', property='port')
-rmq_username = af_support_tools.get_config_file_property(config_file=conf_file, heading='dne_paqx_parent', property='rmq_username')
-rmq_password = af_support_tools.get_config_file_property(config_file=conf_file, heading='dne_paqx_parent', property='rmq_password')
-node_id = af_support_tools.get_config_file_property(config_file=conf_file, heading='dne_paqx_parent', property='node_id')
-rackhd_ip = af_support_tools.get_config_file_property(config_file=conf_file, heading='dne_paqx_parent', property='rackhd_ip')
-mac_address = af_support_tools.get_config_file_property(config_file=conf_file, heading='dne_paqx_parent', property='mac_address')
+    # Set Vars
+    global ipaddress
+    ipaddress = af_support_tools.get_config_file_property(config_file=env_file, heading='Base_OS', property='hostname')
+    global ssh_user
+    username = af_support_tools.get_config_file_property(config_file=env_file, heading='Base_OS', property='username')
+    global sshpass
+    sshpass = af_support_tools.get_config_file_property(config_file=env_file, heading='Base_OS', property='password')
 
-rmq_username = 'guest'
-rmq_password = 'guest'
-port = 5672
-node_id = '111111111111111111111111'
+    global node_id
+    node_id = af_support_tools.get_config_file_property(config_file=conf_file, heading='dne_paqx_parent', property='node_id')
+    global rackhd_ip
+    rackhd_ip = af_support_tools.get_config_file_property(config_file=conf_file, heading='dne_paqx_parent', property='rackhd_ip')
+    global mac_address
+    mac_address = af_support_tools.get_config_file_property(config_file=conf_file, heading='dne_paqx_parent', property='mac_address')
+
+    global rmq_username
+    rmq_username = 'guest'
+    global rmq_password
+    rmq_password = 'guest'
+    global port
+    port = 5672
 
 #####################################################################
 # These are the main tests.
