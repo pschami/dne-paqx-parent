@@ -10,6 +10,8 @@ echo "Loading Dell Inc. DNE PAQX docker image."
 
 docker load -i IMAGE_NAME_STANDIN.tar
 
+sed -i -- 's/\${HOSTNAME}/'${HOSTNAME}'/g' docker-compose.yml
+
 #if -s, skip running the docker image. If not, run the image automatically
 
 case "$1" in
