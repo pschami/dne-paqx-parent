@@ -53,15 +53,15 @@ SERVICE_BUILD_ROOT=${RPM_BUILD_ROOT}/opt/dell/cpsd/dne-paqx
 init_dir ${SERVICE_BUILD_ROOT}
 init_dir ${SERVICE_BUILD_ROOT}/install
 init_dir ${SERVICE_BUILD_ROOT}/image
-init_dir ${SERVICE_BUILD_ROOT}/image/dne-paqx
+init_dir ${SERVICE_BUILD_ROOT}/image/dne-paqx-web
 init_dir ${SERVICE_BUILD_ROOT}/image/engineering-standards-service
 
 
 ##############################################################################
 # copy the image to the required directory
 ##############################################################################
-cp -r ${RPM_SOURCE_DIR}/target/dependency/dne-paqx/* ${SERVICE_BUILD_ROOT}/image/dne-paqx
-cp -r ${RPM_SOURCE_DIR}/target/dependency/dne-paqx/* ${SERVICE_BUILD_ROOT}/image/engineering-standards-service
+cp -r ${RPM_SOURCE_DIR}/target/dependency/dne-paqx/* ${SERVICE_BUILD_ROOT}/image/dne-paqx-web
+cp -r ${RPM_SOURCE_DIR}/target/dependency/engineering-standards-service/* ${SERVICE_BUILD_ROOT}/image/engineering-standards-service
 
 
 ##############################################################################
@@ -77,6 +77,8 @@ cp -rf ${RPM_SOURCE_DIR}/build/docker-compose.yml ${SERVICE_BUILD_ROOT}/install
 # copy the unit file
 ##############################################################################
 cp ${RPM_SOURCE_DIR}/build/dne-paqx.service ${RPM_BUILD_ROOT}/usr/lib/systemd/system
+cp ${RPM_SOURCE_DIR}/build/dne-paqx-web.service ${RPM_BUILD_ROOT}/usr/lib/systemd/system
+cp ${RPM_SOURCE_DIR}/build/engineering-standards-service.service ${RPM_BUILD_ROOT}/usr/lib/systemd/system
 
 
 ##############################################################################
@@ -118,9 +120,11 @@ exit 0
 %files
 
 %attr(644,root,root) /usr/lib/systemd/system/dne-paqx.service
+%attr(644,root,root) /usr/lib/systemd/system/dne-paqx-web.service
+%attr(644,root,root) /usr/lib/systemd/system/engineering-standards-service.service
 
 %attr(0754,dnepx,dell) /opt/dell/cpsd/dne-paqx
 %attr(0755,dnepx,dell) /opt/dell/cpsd/dne-paqx/install
 %attr(0755,dnepx,dell) /opt/dell/cpsd/dne-paqx/image
-%attr(0755,dnepx,dell) /opt/dell/cpsd/dne-paqx/image/dne-paqx
+%attr(0755,dnepx,dell) /opt/dell/cpsd/dne-paqx/image/dne-paqx-web
 %attr(0755,dnepx,dell) /opt/dell/cpsd/dne-paqx/image/engineering-standards-service

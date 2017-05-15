@@ -7,8 +7,10 @@
 echo "Removing Dell Inc. DNE PAQX components"
 
 systemctl disable dne-paqx
+systemctl disable engineering-standards-service
+systemctl disable dne-paqx-web
 
-/bin/sh /opt/dell/cpsd/dne-paqx/image/dne-paqx/remove.sh
+/bin/sh /opt/dell/cpsd/dne-paqx/image/dne-paqx-web/remove.sh
 /bin/sh /opt/dell/cpsd/dne-paqx/image/engineering-standards-service/remove.sh
 
 echo "Dell Inc. DNE PAQX components removal has completed successfully."
