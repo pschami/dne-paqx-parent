@@ -70,7 +70,6 @@ cp -r ${RPM_SOURCE_DIR}/target/dependency/engineering-standards-service/* ${SERV
 cp -rf ${RPM_SOURCE_DIR}/build/install.sh ${SERVICE_BUILD_ROOT}/install
 cp -rf ${RPM_SOURCE_DIR}/build/remove.sh ${SERVICE_BUILD_ROOT}/install
 cp -rf ${RPM_SOURCE_DIR}/build/upgrade.sh ${SERVICE_BUILD_ROOT}/install
-cp -rf ${RPM_SOURCE_DIR}/build/docker-compose.yml ${SERVICE_BUILD_ROOT}/install
 
 
 ##############################################################################
@@ -78,7 +77,7 @@ cp -rf ${RPM_SOURCE_DIR}/build/docker-compose.yml ${SERVICE_BUILD_ROOT}/install
 ##############################################################################
 cp ${RPM_SOURCE_DIR}/build/dne-paqx.service ${RPM_BUILD_ROOT}/usr/lib/systemd/system
 cp ${RPM_SOURCE_DIR}/build/dne-paqx-web.service ${RPM_BUILD_ROOT}/usr/lib/systemd/system
-cp ${RPM_SOURCE_DIR}/build/engineering-standards-service.service ${RPM_BUILD_ROOT}/usr/lib/systemd/system
+cp ${RPM_SOURCE_DIR}/build/dne-paqx-ess.service ${RPM_BUILD_ROOT}/usr/lib/systemd/system
 
 
 ##############################################################################
@@ -121,7 +120,7 @@ exit 0
 
 %attr(644,root,root) /usr/lib/systemd/system/dne-paqx.service
 %attr(644,root,root) /usr/lib/systemd/system/dne-paqx-web.service
-%attr(644,root,root) /usr/lib/systemd/system/engineering-standards-service.service
+%attr(644,root,root) /usr/lib/systemd/system/dne-paqx-ess.service
 
 %attr(0754,dnepx,dell) /opt/dell/cpsd/dne-paqx
 %attr(0755,dnepx,dell) /opt/dell/cpsd/dne-paqx/install

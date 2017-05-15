@@ -8,9 +8,11 @@ RETVAL=0
 
 echo "Loading Dell Inc. DNE PAQX docker image."
 
-docker load -i IMAGE_NAME_STANDIN.tar
+SCRIPT_PATH=$(dirname "$0")
 
-sed -i -- 's/\${HOSTNAME}/'${HOSTNAME}'/g' docker-compose.yml
+docker load -i $SCRIPT_PATH/IMAGE_NAME_STANDIN.tar
+
+sed -i -- 's/\${HOSTNAME}/'${HOSTNAME}'/g' $SCRIPT_PATH/docker-compose.yml
 
 #if -s, skip running the docker image. If not, run the image automatically
 
@@ -19,7 +21,7 @@ case "$1" in
 exit 0
 ;;
 *)
-/usr/bin/docker-compose -f docker-compose.yml up -d
+/usr/bin/docker-compose -f $SCRIPT_PATH/docker-compose.yml up -d
 ;;
 esac
 

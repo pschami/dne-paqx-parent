@@ -7,17 +7,16 @@ PartOf=dne-paqx.service
 
 # Start this unit after the dne-paqx.service start
 After=dne-paqx.service
-After=engineering-standards-service.service
+After=dne-paqx-ess.service
 
 [Service]
-WorkingDirectory=/opt/dell
 Environment=HOSTNAME=%H
-ExecStart=/usr/bin/docker-compose -f /opt/dell/cpsd/dne-paqx/image/dne-paqx-web/docker-compose.yml up -d
+ExecStart=/usr/bin/docker-compose -f /opt/dell/cpsd/dne-paqx/image/dne-paqx-web/docker-compose.yml up
 ExecStop=/usr/bin/docker-compose -f /opt/dell/cpsd/dne-paqx/image/dne-paqx-web/docker-compose.yml down
 
 # Restart the service on non-zero exit code when terminated by a signal other than SIGHUP, SIGINT, SIGTERM or SIGPIPE
 Restart=on-failure
 
 [Install]
-# This unit should start when dne-pawx.service is starting
+# This unit should start when dne-paqx.service is starting
 WantedBy=dne-paqx.service
