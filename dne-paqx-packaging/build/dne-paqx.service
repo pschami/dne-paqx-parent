@@ -2,6 +2,9 @@
 [Unit]
 Description=DNE PAQX
 
+# Start this unit after the dne-paqx.service start
+After=network.target docker.service rabbitmq-server.service
+
 [Service]
 Type=oneshot
 
