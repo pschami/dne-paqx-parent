@@ -34,6 +34,7 @@ def add_node_url(dne_paqx_base_url):
 
 @pytest.fixture(scope='module', autouse=True)
 def restart_dne_paqx_log():
-    # TBD
-    pass
+    endpoint = '/nodes'
+   url = dne_paqx_base_url + endpoint
+    my_data['add_node_url'] = url
 
